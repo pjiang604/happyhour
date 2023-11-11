@@ -29,11 +29,11 @@
 }
 
 .container {
-    display:flex;
+    display: flex;
     flex-direction: row;
-    align-items: center;
-    width: 100%;
     justify-content: space-between;
+    padding: 0 15%;
+    align-items: center;
 }
 
 .nav-links {
