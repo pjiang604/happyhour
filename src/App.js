@@ -8,9 +8,7 @@ function App() {
   return (
     <div className="App">
         <Nav />
-        <Link to="./pages/home"><button>Home</button></Link>
-        <Link to="./pages/drink"><button>Drink</button></Link>
-        <Link to="./pages/yourmenu"><button>Your Menu</button></Link>
+        <Link to="./pages/drink"><button>Drink page working link</button></Link>
        
     </div>
   );

@@ -1,4 +1,5 @@
 import '../Filter/style.css'
+import IngredientBtn from '../Ingredient'
 
 export default function Filter() {
     return (
@@ -9,12 +10,13 @@ export default function Filter() {
                     <input
                         name="freeInput"
                         placeholder='enter a drink name or ingredient'
-                        className="freeInput"
+                        className="freeInput inputStyling"
                     />
                 </div>
 
                 <select
-                className="selectContainer">
+                    className="selectContainer inputStyling">
+                    <option value="default">select a category</option>
                     <option value="ordinaryDrink">ordinary drink</option>
                     <option value="cocktail">cocktail</option>
                     <option value="shake">shake</option>
@@ -30,12 +32,13 @@ export default function Filter() {
 
             </div>
             <div className='quickIngredient'>
-                <button className='ingredient'>gin</button>
-                <button className='ingredient'>champagne</button>
-                <button className='ingredient'>tequila</button>
-                <button className='ingredient'>vodka</button>
-                <button className='ingredient'>rum</button>
-                <button className='ingredient'>whiskey</button>
+                <IngredientBtn name="gin"/>
+                <IngredientBtn name="champagne"/>
+                <IngredientBtn name="tequila"/>
+                <IngredientBtn name="vodka"/>
+                <IngredientBtn name="rum"/>
+                <IngredientBtn name="gin"/>
+
             </div>
 
         </div>
