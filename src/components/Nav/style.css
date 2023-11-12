@@ -23,7 +23,7 @@
     font-size: 20px;
 }
 
-.nav-links a, .nav-links a:visited, .nav-links a:active {
+.nav-links a, .nav-links a:visited, .nav-links a:active, .container a {
     text-decoration: none;
     color: black;
 }
