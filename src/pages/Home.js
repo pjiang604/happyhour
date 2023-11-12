@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import HomeHero from "../components/HomeHero";
 import "./Home.css"
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
+
 
 const Home = () => {
 
@@ -33,12 +35,15 @@ const Home = () => {
         <div className="drinkDisplay">
           {data && data.drinks.map((i, index) => {
             return (
-                <div
+              <Link to="./pages/drink">
+                              <div
                   className="drinkCard"
                   key={index}>
                   <img src={i.strDrinkThumb} className="drinkImg" alt={i.strDrink} />
                   {i.strDrink}
                 </div>
+              </Link>
+
             )
           })}
         </div>
