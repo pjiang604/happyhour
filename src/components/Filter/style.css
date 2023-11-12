@@ -1,0 +1,41 @@
+
+.filterContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5%;
+    margin: 10pt 0;
+    gap: 10pt;
+}
+.freeInput{
+    width: 370pt;
+    height: 25pt
+}
+.input{
+    display: flex;
+    flex-direction: row;
+    gap: 20pt;
+    align-items: center;
+}
+.inputContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.selectContainer{
+    width: 240pt;
+    height: 25pt
+}
+
+.quickIngredient{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ingredient{
+    width: 117pt;
+    height: 20pt
+}

@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import HomeHero from "../components/HomeHero";
 import "./Home.css"
 import { useState, useEffect } from "react";
+import Filter from "../components/Filter";
 
 const Home = () => {
 
@@ -26,13 +27,12 @@ const Home = () => {
       <HomeHero />
       <div className="contentContainer">
         <div className="filterContainer">
-          <p>This is where the drink filter buttons go</p>
+          <Filter/>
         </div>
 
         <div className="drinkDisplay">
           {data && data.drinks.map((i, index) => {
             return (
-
                 <div
                   className="drinkCard"
                   key={index}>
