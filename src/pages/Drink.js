@@ -2,6 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import "./Drink.css"
+import Notes from "../components/Notes";
 
 
 const Drink = () => {
@@ -63,6 +64,7 @@ const Drink = () => {
           }
           <div className="notes">
                   <h1>Notes</h1>
+                  <Notes/>
                   </div>
         </div>
       </div>

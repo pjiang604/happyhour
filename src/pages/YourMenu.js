@@ -11,14 +11,14 @@ const List = () => {
     <div className="menu_container">
     <h2>this is on the list page</h2>
     
-    {/* <p>Hello World</p> */}
+    
     {/* <Navbar/> */}
    
     
 
       {/* <Outlet /> */}
       <div className="image">
-      <img src={Hero} ></img>
+      <img src={Hero} className="menuhero" ></img>
 
       </div>
       

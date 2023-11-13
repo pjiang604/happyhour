@@ -1,0 +1,48 @@
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 80px;
+}
+.date_container {
+    height: 33px;
+    width: 310px;
+    border-color: #FF9B85;
+    border-radius: 8px;
+}
+.input_container{
+    height: 290px;
+width: 713px;
+border: 1px;
+border-color: black;
+display: flex;
+flex-direction: column;
+gap: 20px
+;
+}
+.notes_container{
+height: 290px;
+width: 713px;
+/* border: none; */
+justify-content: top;
+border-color: #FF9B85;
+border-radius: 13px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.edit_button{
+    border-color: #FF9B85;
+    height: 40px;
+    width: 88px;
+    border-radius: 10px;
+}
+.delete_button{
+    border-color: #FF9B85;
+    height: 40px;
+    width: 88px;
+    border-radius: 10px;
+}
