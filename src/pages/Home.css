@@ -22,3 +22,10 @@
     align-items: center;
     margin-bottom: 40pt;
 }
+
+.drinkDisplay a { 
+    text-decoration: none;
+    color: black;
+    text-transform: lowercase;
+    font-size: 18px;
+}
