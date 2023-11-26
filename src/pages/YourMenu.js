@@ -21,8 +21,9 @@ const List = () => {
       <img src={Hero} className="menuhero" ></img>
 
       </div>
+      <div className="coctails_images"> 
       
-      <div className="coctail_contailer">
+      <div className="coctail_contailer_one">
       
           <img src={Coctail} className="drink_image"></img>
         
@@ -30,10 +31,14 @@ const List = () => {
       
       <img src={Coctail} className="drink_image"></img>
       <img src={Coctail} className="drink_image"></img>
+      </div>
+      <div className="coctail_contailer_two">
       <img src={Coctail} className="drink_image"></img>
       <img src={Coctail} className="drink_image"></img>
       <img src={Coctail} className="drink_image"></img>
       </div>
+      </div>
+      
       <Footer/>
       </div>
       

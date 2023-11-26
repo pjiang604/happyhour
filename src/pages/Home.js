@@ -4,6 +4,7 @@ import HomeHero from "../components/HomeHero";
 import "./Home.css"
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
+import HearthButton from "../components/Hearth";
 
 
 const Home = () => {
@@ -39,8 +40,10 @@ const Home = () => {
                               <div
                   className="drinkCard"
                   key={index}>
+                    <HearthButton/>
                   <img src={i.strDrinkThumb} className="drinkImg" alt={i.strDrink} />
                   {i.strDrink}
+                  
                 </div>
               </Link>
 
