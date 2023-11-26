@@ -35,7 +35,7 @@ const Home = () => {
         <div className="drinkDisplay">
           {data && data.drinks.map((i, index) => {
             return (
-              <Link to="./pages/drink">
+              <Link to={`./pages/drink`} state={{drinkId: i.idDrink}}>
                               <div
                   className="drinkCard"
                   key={index}>
