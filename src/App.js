@@ -8,8 +8,6 @@ function App() {
   return (
     <div className="App">
         <Nav />
-        <Link to="./pages/drink"><button>Drink page working link</button></Link>
-       
     </div>
   );
 }

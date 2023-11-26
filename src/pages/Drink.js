@@ -1,27 +1,36 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import "./Drink.css"
 import Notes from "../components/Notes";
+import DrinkHero from '../assets/Hero/DrinkHero.png'
 
 
 const Drink = () => {
-
   const [data, setData] = useState();
+  const [error, setError] = useState(null);
+  const location = useLocation();
+  const [steps, setSteps] = useState([]);
 
-  const API_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
+  const drinkId = location.state.drinkId;
+  const API_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
 
   useEffect(() => {
     fetch(API_URL)
-      .then(response => response.json()) //converts the data to json file
+      .then(response => response.json()) // converts the data to a JSON file
       .then(response => {
-        setData(response); //the data is now stored in the useState
-        console.log(response);
+        setData(response); // the data is now stored in the useState
+        console.log(data);
+        return response.drinks[0].strInstructions;
+      })
+      .then(recipeStr => {
+        const recipeSplit = recipeStr.split('. ');
+        setSteps(recipeSplit);
       })
       .catch(err => {
         console.log(err);
-      })
-  }, [])
+      });
+  }, []);
 
   return (
     <>
@@ -29,43 +38,44 @@ const Drink = () => {
         <div className="drinkDisplay">
           {
             data && data.drinks.map((a, value) => {
-              console.log(data);
-              if (a.strDrink == "Applejack") {
-                return (
-                  <div key={value} className="drinkContainer">
+              return (
+                <div key={value} className="drinkContainer">
+                  <div className="drinkHeroSection">
+                    <img src={DrinkHero} className="drinkHeroImg" alt="hero image" />
+                    <h2 className="drinkName">{a.strDrink}</h2>
+                  </div>
+                  <div className="drinkInfo">
                     <div className="drinkLeft">
-                      <h2>{a.strDrink}</h2>
                       <img src={a.strDrinkThumb} className="drinkPageImg" alt={a.strDrink} />
                     </div>
                     <div className="drinkRight">
                       <h3>Ingredients</h3>
                       <ul className="ingredientsList">
-                        <li>3/4 oz Sweet Vermouth</li>
-                        <li>2 1/2 oz Blended Bourbon</li>
-                        <li>dash Angostura bitters</li>
-                        <li>1 Maraschino cherry</li>
-                        <li>1 twist of Orange peel</li>
-                        <li>Ice cubes</li>
-                        </ul>
+                        <li>{a.strMeasure1} {a.strIngredient1}</li>
+                        <li>{a.strMeasure2} {a.strIngredient2}</li>
+                        <li>{a.strMeasure3} {a.strIngredient3}</li>
+                        <li>{a.strMeasure4} {a.strIngredient4}</li>
+                        <li>{a.strMeasure5} {a.strIngredient5}</li>
+                        <li>{a.strMeasure6} {a.strIngredient6}</li>
+                      </ul>
                       <h3>Instructions</h3>
                       <ol className="instructions">
-                        <li>Rub the rim of the glass with the lime slice.</li>
-                        <li>Outer rim and sprinkle the salt on it.</li>
-                        <li>Never mix the salt into the cocktail.</li>
-                        <li>Shake the other ingredients with ice.</li>
-                        <li>Pour into the glass.</li>
+                        {steps.map((step, index) => (
+                          <li key={index}>{step}</li>
+                        ))}
                       </ol>
-                      <p>Serve: Cocktail glass</p>
+                      <p>Serve: {a.strGlass}</p>
                     </div>
                   </div>
-                )
-              }
-            })
+                </div>
+              )
+            }
+            )
           }
           <div className="notes">
-                  <h1>Notes</h1>
-                  <Notes/>
-                  </div>
+            <h1>Notes</h1>
+            <Notes />
+          </div>
         </div>
       </div>
       <Outlet />
@@ -75,3 +85,4 @@ const Drink = () => {
 };
 
 export default Drink;
+
