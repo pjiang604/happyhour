@@ -5,8 +5,6 @@ import "./styles.css"
 import { useState, useEffect } from 'react';
 import React from 'react';
 
-
-
 export default function HearthButton({ value }) {
 
     const [heartActive, setHeartActive] = useState(false);
@@ -17,13 +15,11 @@ export default function HearthButton({ value }) {
     const handleStorage = () => {
         setDrink(JSON.stringify(value))
         localStorage.setItem(`${value}`, drink)
-        localStorage.setItem(`heart-${value}`, heartActive)
         console.log("stored drink ID" + drink)
     }
 
     const handleDelete = () => {
         localStorage.removeItem(`${value}`)
-        localStorage.removeItem(`heart-${value}`, heartActive)
         console.log("deleted drink ID" + drink)
 
     }
@@ -51,7 +47,7 @@ export default function HearthButton({ value }) {
                         :
                         handleStorage()
                 }
-            }} className='HeartContainer' value={heartActive}>
+            }} className='HeartContainer' value={value}>
                 <img src={heartActive ? Hearth : HearthStroke} className='Hearth' alt="Homepage Hero" />
 
             </button>

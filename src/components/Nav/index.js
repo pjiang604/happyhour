@@ -13,10 +13,9 @@ export default function Navbar({ }) {
             </div>
             </Link>
 
-            <div className="nav-links">
+            {/* <div className="nav-links">
                 <Link to="./">Home</Link>
-                <Link to="./pages/YourMenu">Your Menu</Link>
-            </div>
+            </div> */}
         </div>
     );
 }
