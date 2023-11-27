@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import YourMenu from "./pages/YourMenu";
+
 import Home from "./pages/Home";
 import Drink from "./pages/Drink";
 
@@ -16,7 +16,6 @@ root.render(
       <Routes>
       <Route index element={<Home />} />
       <Route path="/pages/Drink" element={<Drink />} />
-      <Route path="/pages/YourMenu" element={<YourMenu />} />
       </Routes>
       
     </BrowserRouter>

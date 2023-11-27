@@ -4,11 +4,27 @@ import HomeHero from "../components/HomeHero";
 import "./Home.css"
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
-import HearthButton from "../components/Hearth";
-import Drinks from "../components/Drinks";
+import Hearth from '../components/Hearth/index'
 
 
 const Home = () => {
+
+  const [data, setData] = useState();
+
+  const API_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then(response => response.json()) //converts the data to json file
+      .then(response => {
+        console.log(response);
+        setData(response); //the data is now stored in the useState
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
+
   return (
     <>
       <HomeHero />
@@ -17,7 +33,24 @@ const Home = () => {
           <Filter />
         </div>
 
-       <Drinks/>
+        <div className="drinkDisplay">
+          {data && data.drinks.map((i, index) => {
+            return (
+              <div className="drinkContainer">
+                <Link to={`./pages/drink`} state={{ drinkId: i.idDrink }}>
+
+                  <div
+                    className="drinkCard"
+                    key={index}>
+                    <img src={i.strDrinkThumb} className="drinkImg" alt={i.strDrink} />
+                    {i.strDrink}
+                  </div>
+                </Link>
+                <Hearth value={i.idDrink}/>
+              </div>
+            )
+          })}
+        </div>
       </div >
 
       <Footer />
