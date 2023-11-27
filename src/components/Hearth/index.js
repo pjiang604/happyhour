@@ -1,23 +1,61 @@
-import { Link } from 'react-router-dom';
-import Hearth from '../../assets/Hearth/HearthStroke.png'
+
+import Hearth from '../../assets/Hearth/HearthFill.png'
 import HearthStroke from '../../assets/Hearth/HearthStroke.png'
 import "./styles.css"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
-export default function HearthButton() {
-    const [isHeartStroke, setHeartStroke] = useState(false);
-    function ChangeIcon() {
-       
-        setHeartStroke(!isHeartStroke)
-    }
-    return(
-        <>
-          <Link to={`./pages/YourMenu`} >
-          <button onChange={ChangeIcon} className='HeartContainer'>
-        <img src={isHeartStroke ? HearthStroke : Hearth} className='Hearth' alt="Homepage Hero"/>
 
-        </button>
-        </Link>
-        </>
+
+
+export default function HearthButton({ value }) {
+
+    const [heartActive, setHeartActive] = useState(false);
+    const [drink, setDrink] = useState(value)
+
+    const items = { ...localStorage }; //retrieve all items from local storage
+
+    const handleStorage = () => {
+        setDrink(JSON.stringify(value))
+        localStorage.setItem(`${value}`, drink)
+        localStorage.setItem(`heart-${value}`, heartActive)
+        console.log("stored drink ID" + drink)
+    }
+
+    const handleDelete = () => {
+        localStorage.removeItem(`${value}`)
+        localStorage.removeItem(`heart-${value}`, heartActive)
+        console.log("deleted drink ID" + drink)
+
+    }
+
+    const ChangeIcon = () => {
+        if(heartActive){
+            setHeartActive(false)
+        }else if (!heartActive ) {
+            setHeartActive(true)
+        }
+        console.log(heartActive)
+        console.log(items)
+
+    }
+
+
+    return (
+
+        <div className="whiteCircle">
+            <button type="button" onClick={() => {
+                ChangeIcon();
+                {
+                    heartActive ?
+                        handleDelete()
+                        :
+                        handleStorage()
+                }
+            }} className='HeartContainer' value={heartActive}>
+                <img src={heartActive ? Hearth : HearthStroke} className='Hearth' alt="Homepage Hero" />
+
+            </button>
+        </div>
+
     )
 }

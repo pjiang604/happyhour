@@ -1,9 +1,4 @@
-.drinkContainer {
-    width: 100%;
-    display:grid;
-    grid-template-rows: 1fr;
-    gap: 0;
-}
+
 
 .drinkInfo {
     width: 100%;
@@ -31,7 +26,7 @@
 }
 
 .ingredientsList {
-    list-style-type: none;
+    list-style-type: disc;
     margin-left: -2em;
 }
 

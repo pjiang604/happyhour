@@ -51,12 +51,12 @@ const Drink = () => {
                     <div className="drinkRight">
                       <h3>Ingredients</h3>
                       <ul className="ingredientsList">
-                        <li>{a.strMeasure1} {a.strIngredient1}</li>
-                        <li>{a.strMeasure2} {a.strIngredient2}</li>
-                        <li>{a.strMeasure3} {a.strIngredient3}</li>
-                        <li>{a.strMeasure4} {a.strIngredient4}</li>
-                        <li>{a.strMeasure5} {a.strIngredient5}</li>
-                        <li>{a.strMeasure6} {a.strIngredient6}</li>
+                        { a.strMeasure1 && <li>{a.strMeasure1} {a.strIngredient1}</li>}
+                        { a.strMeasure2 &&<li>{a.strMeasure2} {a.strIngredient2}</li> }
+                       { a.strMeasure3 && <li>{a.strMeasure3} {a.strIngredient3}</li> }
+                       { a.strMeasure4 && <li>{a.strMeasure4} {a.strIngredient4}</li> }
+                       { a.strMeasure5 &&<li>{a.strMeasure5} {a.strIngredient5}</li> }
+                       { a.strMeasure6 &&<li>{a.strMeasure6} {a.strIngredient6}</li> }
                       </ul>
                       <h3>Instructions</h3>
                       <ol className="instructions">

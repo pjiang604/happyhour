@@ -1,0 +1,7 @@
+.drinkDisplayContainer{
+    padding: 0 15%;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    flex-wrap: wrap;
+}
