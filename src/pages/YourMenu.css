@@ -2,11 +2,21 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
 }
 /* .image{
 width: 100%
 
 }; */
+
+.drinkDisplayContainer{
+    padding: 0 15%;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
 .menuhero{
     width: 100%;
 }

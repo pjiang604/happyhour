@@ -1,47 +1,46 @@
-import { Outlet, Link } from "react-router-dom";
 import Hero from "../assets/Hero/Hero.png"
-import Coctail from "../assets/Coctail/Drink.png"
-import Navbar from "../components/Nav";
+import { Link } from "react-router-dom";
+import HearthButton from "../components/Hearth";
 import "./YourMenu.css"
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
+import Drinks from "../components/Drinks";
 
 const List = () => {
+
+
+  const [data, setData] = useState();
+
+  const API_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then(response => response.json()) //converts the data to json file
+      .then(response => {
+        console.log(response);
+        setData(response); //the data is now stored in the useState
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
+
   return (
     <>
-    <div className="menu_container">
-    <h2>this is on the list page</h2>
-    
-    
-    {/* <Navbar/> */}
-   
-    
+      <div className="menu_container">
+        {/* <Navbar/> */}
 
-      {/* <Outlet /> */}
-      <div className="image">
-      <img src={Hero} className="menuhero" ></img>
 
+
+        {/* <Outlet /> */}
+        <div className="image">
+          <img src={Hero} className="menuhero" ></img>
+        </div>
+        <Drinks />
+
+        <Footer />
       </div>
-      <div className="coctails_images"> 
-      
-      <div className="coctail_contailer_one">
-      
-          <img src={Coctail} className="drink_image"></img>
-        
-      
-      
-      <img src={Coctail} className="drink_image"></img>
-      <img src={Coctail} className="drink_image"></img>
-      </div>
-      <div className="coctail_contailer_two">
-      <img src={Coctail} className="drink_image"></img>
-      <img src={Coctail} className="drink_image"></img>
-      <img src={Coctail} className="drink_image"></img>
-      </div>
-      </div>
-      
-      <Footer/>
-      </div>
-      
+
     </>
   )
 };
