@@ -32,9 +32,7 @@ export default function HearthButton({ value }) {
         }
         console.log(heartActive)
         console.log(items)
-
     }
-
 
     return (
 

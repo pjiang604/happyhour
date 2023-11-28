@@ -34,3 +34,83 @@
     text-transform: lowercase;
     font-size: 18px;
 }
+
+/*FILTER*/
+
+.filterContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5%;
+    margin: 1em 0;
+    gap: 5%;
+}
+.freeInput{
+    width: 70%;
+    height: 14pt
+}
+.input{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    align-items: center;
+    width: 70%
+}
+.inputContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.selectContainer{
+    width: 30%;
+    height: 25pt;
+}
+
+.quickIngredient{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.favouritesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ingredient{
+    width: 16%;
+    height: 25pt
+}
+
+.inputStyling{
+    border-radius: 5pt;
+    background: white;
+    border: 1pt solid #FF9B85;
+    padding: 5pt;
+    box-shadow: 3pt 3pt 3pt #e0e0e0;
+}
+
+.outlineBtn{
+    width: 16%;
+    height: 25pt;
+    border-radius: 5pt;
+    background: white;
+    border: 1pt solid #FF9B85;
+    padding: 5pt;
+    box-shadow: 3pt 3pt 3pt #e0e0e0;
+}
+
+.pressedBtn{
+    width: 16%;
+    height: 25pt;
+    border-radius: 5pt;
+    background: #FF9B85;
+    border: 1pt solid #FF9B85;
+    padding: 5pt;
+    box-shadow: 3pt 3pt 3pt #e0e0e0;
+    color: white
+}
