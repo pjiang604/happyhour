@@ -20,7 +20,6 @@ const Home = () => {
       .then(response => {
         console.log(response);
         setData(response); //the data is now stored in the useState
-
       })
       .catch(err => {
         console.log(err);
@@ -83,6 +82,26 @@ const Home = () => {
   let btn_class_rum = !pressedRum ? "pressedBtn" : "outlineBtn"
   let btn_class_favourite = !pressedFavourite ? "pressedBtn" : "outlineBtn"
 
+  //dropdown 
+  const [categoryOption, setCategoryOption] = useState("");
+
+  function handleFilter(e) {
+    let apiLink = "";
+    if (e.target.value === 'default') {
+      apiLink = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
+    } else apiLink = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${e.target.value}`
+    fetch(apiLink)
+      .then(response => response.json()) //converts the data to json file
+      .then(response => {
+        console.log(response);
+        setData(response); //the data is now stored in the useState
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      setCategoryOption(e.target.value);
+  }
+
   return (
     <>
       <HomeHero />
@@ -99,20 +118,20 @@ const Home = () => {
                     />
                 </div>
 
-                <select
+                <select value={categoryOption} onChange={handleFilter}
                     className="selectContainer inputStyling">
                     <option value="default">select a category</option>
-                    <option value="ordinaryDrink">ordinary drink</option>
+                    <option value="ordinary_drink">ordinary drink</option>
                     <option value="cocktail">cocktail</option>
                     <option value="shake">shake</option>
                     <option value="cocoa">cocoa</option>
                     <option value="shot">shot</option>
-                    <option value="coffeeTea">coffee / tea</option>
-                    <option value="homemadeLiqueur">homemade liqueur</option>
-                    <option value="punch">punch / party drink</option>
+                    <option value="Coffee / Tea">coffee / tea</option>
+                    <option value="homemade_Liqueur">homemade liqueur</option>
+                    <option value="punch / party_drink">punch / party drink</option>
                     <option value="beer">beer</option>
-                    <option value="softDrink">soft drink</option>
-                    <option value="other">other / unknown</option>
+                    <option value="soft_Drink">soft drink</option>
+                    <option value="other / unknown">other / unknown</option>
                 </select>
 
             </div>
@@ -170,11 +189,10 @@ const Home = () => {
         <div className="drinkDisplay">
           {data && data.drinks.map((i, index) => {
             return (
-              <div className="drinkContainer">
+              <div className="drinkContainer" key={index}>
                 <Link to={`./pages/drink`} state={{ drinkId: i.idDrink }}>
                   <div
-                    className="drinkCard"
-                    key={index}>
+                    className="drinkCard">
                     <img src={i.strDrinkThumb} className="drinkImg" alt={i.strDrink} />
                     {i.strDrink}
                   </div>
