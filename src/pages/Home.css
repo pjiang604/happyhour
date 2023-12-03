@@ -114,3 +114,29 @@
     box-shadow: 3pt 3pt 3pt #e0e0e0;
     color: white
 }
+
+/*Button*/
+
+.HeartContainer {
+    border: none;
+    background-color: transparent;
+}
+
+.whiteCircle {
+    background-color: white;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 2.5em;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 1em;
+    top: 1em;
+}
+
+.whiteCircle > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
