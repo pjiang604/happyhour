@@ -73,7 +73,7 @@ const Drink = () => {
             )
           }
           <div className="notes">
-            <h1>Notes</h1>
+            <h1 className="note_title">Notes</h1>
             <Notes />
           </div>
         </div>
