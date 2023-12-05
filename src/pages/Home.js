@@ -11,6 +11,7 @@ const Home = () => {
 
   const navigate = useNavigate()
 
+
   //API
   const [data, setData] = useState();
 

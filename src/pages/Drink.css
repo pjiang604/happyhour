@@ -76,3 +76,8 @@
 .note_title {
     margin-left: 373px;
 }
+
+.add-form{
+    display: flex;
+    flex-direction: row;
+}
