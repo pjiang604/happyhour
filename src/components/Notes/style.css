@@ -1,20 +1,38 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 4em;
+}
+
+.notesForm,
+.savedNotes{
+    width: 50%;
+}
+
+.notesForm{
+
+}
+
+.savedNotes{
+
+}
+
 .inputs {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 80px;
-    margin-left: 373px;
+
 }
 .date_container {
-    height: 33px;
-    width: 310px;
+    width: 50%;
     border-color: #FF9B85;
-    
+    padding: 0.5em;
     border-radius: 8px;
 }
 .input_container{
-    height: 290px;
-width: 713px;
+    height: 100%;
+width: 100%;
 border: 1px;
 border-color: black;
 display: flex;
@@ -23,8 +41,8 @@ gap: 20px
 ;
 }
 .notes_container{
-height: 290px;
-width: 713px;
+height: 20em;
+width: 100%;
 /* border: none; */
 justify-content: top;
 border-color: #FF9B85;
@@ -49,4 +67,10 @@ border-radius: 13px;
     width: 88px;
     border-radius: 10px;
     
+}
+
+.note{
+    background-color: pink;
+    width: 100%;
+    height: auto;
 }

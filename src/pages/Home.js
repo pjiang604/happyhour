@@ -3,10 +3,13 @@ import Footer from "../components/Footer";
 import HomeHero from "../components/HomeHero";
 import "./Home.css"
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Home = () => {
+
+  const navigate = useNavigate()
 
   //API
   const [data, setData] = useState();
@@ -47,8 +50,8 @@ const Home = () => {
 
   //Search Bar
   const [searchOption, setSearchOption] = useState("");
-  const [ state, setState ] = useState([]);
-  const [ answers, setAnswers ] = useState({});
+  const [state, setState] = useState([]);
+  const [answers, setAnswers] = useState({});
 
   function handleSearch(e) {
     let apiLink = "";
@@ -67,8 +70,8 @@ const Home = () => {
     setSearchOption(e.target.value);
   }
 
-    function handleClick() {
-    setState([ ...state, answers ]);
+  function handleClick() {
+    setState([...state, answers]);
     setAnswers({});
   }
 
@@ -79,6 +82,7 @@ const Home = () => {
 
   return (
     <>
+
       <HomeHero />
       <div className="contentContainer">
         <div className="filterContainer">
@@ -86,7 +90,7 @@ const Home = () => {
             <div className="inputContainer">
               <div className='input'>
                 <p>find your next drink</p>
-                  <input
+                <input
                   name="freeInput"
                   placeholder='enter a drink name or ingredient'
                   className="freeInput inputStyling"
@@ -123,7 +127,12 @@ const Home = () => {
           {data && data.drinks.map((i, index) => {
             return (
               <div className="drinkContainer" key={index}>
-                <Link to={`./pages/drink`} state={{ drinkId: i.idDrink }}>
+                <Link
+                  to={`/pages/drink/`}
+                  state={{ drinkId: i.idDrink }}
+                  onClick={() => navigate(`/pages/drink`, { state: { drinkId: i.idDrink } })}
+                >
+
                   <div
                     className="drinkCard">
                     <img src={i.strDrinkThumb} className="drinkImg" alt={i.strDrink} />
