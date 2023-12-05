@@ -13,6 +13,7 @@ function App() {
 
   function addProduct(product) {
     setProducts([...products, product]);
+    console.log("add product")
     setEditing(null);
   }
 
@@ -20,12 +21,11 @@ function App() {
     setProducts(
       products.map((p) => (p.id === product.id ? product : p)),
     );
+    console.log("update product")
     setEditing(null);
   }
 
-  function deleteProduct(id) {
-    setProducts(products.filter((p) => p.id !== id));
-  }
+
 
   return (
     <div className="App">
@@ -33,7 +33,7 @@ function App() {
         value={{
           products,
           addProduct,
-          deleteProduct,
+          // deleteProduct,
           updateProduct,
           setEditing,
           editing,
