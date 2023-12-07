@@ -6,13 +6,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
 }
 
 .drinkContainer{
     position: relative;
-    border-radius: 1.5em
+    border-radius: 1.5em;
+    width: 25%;
 }
 
 
