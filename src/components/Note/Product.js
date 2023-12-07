@@ -5,13 +5,14 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material";
 import { Checkbox } from "@mui/material";
 
-export default function Product({ name, product, deleteProduct2, setEditing2, setEditing3, updateProduct, setProduct }) {
+export default function Product({date, name, product, deleteProduct2, setEditing2, setEditing3, updateProduct, setProduct }) {
   
 
   return (
     <div className="product">
       <div className="taskItem">
-        {name}
+        <p>{date}</p>
+        <p>{name}</p>
       </div>
       <div className="buttonContainer">
         <Button color="error" onClick={(() => deleteProduct2(product.id))}>

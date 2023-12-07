@@ -33,6 +33,10 @@ const Drink = () => {
   const { drinkId } = location.state || {};
 
 
+  const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  const currentDate = ` ${monthName[new Date().getMonth()]} ${new Date().getDay()}, ${new Date().getFullYear()}`
+
   // const drinkId = location.state.drinkId;
   const API_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
 
@@ -51,21 +55,28 @@ const Drink = () => {
       .catch(err => {
         console.log(err);
       });
-      const savedItem = JSON.parse(localStorage.getItem('drink' + drinkId));
-      console.log("saved item", savedItem);
-    
-      if (savedItem !== null) {
-        setProduct2(savedItem);
-      } else {
-        console.log("no data");
-      }
-      console.log(`${drinkId}`)
+    const savedItem = JSON.parse(localStorage.getItem('drink' + drinkId));
+    console.log("saved item", savedItem);
+
+    if (savedItem !== null) {
+      setProduct2(savedItem);
+      console.log("data present")
+    } else {
+      console.log("no data");
+    }
+    console.log(`${drinkId}`)
+    setEditing2("new")
 
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('drink' + drinkId, JSON.stringify(product2))
-    console.log('product updated', product2)
+    if (product2.length !== 0) {
+      localStorage.setItem('drink' + drinkId, JSON.stringify(product2))
+      console.log('product updated', JSON.stringify(product2))
+    } else if (product2.length == 0) {
+     localStorage.removeItem('drink' + drinkId) 
+    }
+
   }, [product2])
 
   function setEditing3(id) {
@@ -79,7 +90,7 @@ const Drink = () => {
     // Set the product state for pre-filling the input box
     setProduct({
       name: productToEdit.name,
-      time: new Date().toLocaleTimeString(),
+      date: currentDate,
       id: productToEdit.id,
     });
   }
@@ -87,7 +98,7 @@ const Drink = () => {
 
   const [product, setProduct] = useState({
     name: '',
-    time: new Date().toLocaleTimeString(),
+    date: currentDate,
     id: nanoid()
   });
 
@@ -96,7 +107,7 @@ const Drink = () => {
     e.preventDefault();
     console.log(editing2);
     const existingProductIndex = product2.findIndex((p) => p.id === product.id);
-  
+
     if (editing2 === "new") {
       setProduct2([...product2, { ...product, id: nanoid() }]);
       console.log(product, product2);
@@ -109,28 +120,25 @@ const Drink = () => {
     }
     console.log("stringify", JSON.stringify(product2))
     console.log("parse", JSON.parse(JSON.stringify(product2)))
-  
+
     setProduct({
       name: "",
-      time: new Date().toLocaleTimeString(),
+      date: currentDate,
       id: nanoid(), // Only reset ID if needed (e.g., for a new product)
     });
   }
-  
+
   function deleteProduct2(id) {
     // setProducts(products.filter((p) => p.id !== id));
-    const updatedProducts = products.filter((product) => product.id !== id);
+    const updatedProducts = product2.filter((product) => product.id !== id);
     setProduct2(updatedProducts);
     console.log(updatedProducts)
 
   }
-  
 
   function handleInput(e, field) {
     setProduct({ ...product, [field]: e.target.value });
   }
-
-
 
   useEffect(() => {
     console.log("edit updated", editing2)
@@ -208,6 +216,7 @@ const Drink = () => {
 
 
               <div className="add-form">
+                <p>{currentDate}</p>
                 <form onSubmit={handleSubmit}>
                   <div>
                     <input
@@ -229,11 +238,13 @@ const Drink = () => {
                     >
                       Cancel
                     </button>
-                    <button className="save-btn" color="success" type="submit">
+                    <button
+                      className="save-btn"
+                      color="success"
+                      type="submit">
                       Add Task
                     </button>
                   </div>
-                  <p value={product.time}>Time Created: {product.time}</p>
                 </form>
                 <div>
                   <div className="products">
@@ -245,6 +256,7 @@ const Drink = () => {
                           name={p.name}
                           deleteProduct2={deleteProduct2}
                           setEditing3={setEditing3}
+                          date={p.date}
                         />
                       ))
                     ) : (
