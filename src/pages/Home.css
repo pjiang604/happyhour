@@ -2,7 +2,7 @@
     padding: 0 15%
 }
 
-.drinkDisplay {
+.drinkDisplayHome {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
@@ -12,7 +12,7 @@
 
 }
 
-.drinkContainer{
+.drinkContainerHome{
     position: relative;
     border-radius: 1.5em;
     width: 25%;
@@ -40,7 +40,7 @@
     margin-bottom: 40pt;
 }
 
-.drinkDisplay a { 
+.drinkDisplayHome a { 
     text-decoration: none;
     color: black;
     text-transform: lowercase;
@@ -48,7 +48,7 @@
     transition: 0.5s;
 }
 
-.drinkDisplay a:hover{
+.drinkDisplayHome a:hover{
     font-weight: 700;
 }
 
