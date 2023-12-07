@@ -9,7 +9,7 @@ p{
 
 .drinkInfo {
     width: 100%;
-    display:grid;
+    display: grid;
     grid-template-columns: 50% 50%;
     height: 100%;
 }
@@ -27,7 +27,7 @@ p{
 }
 
 .drinkLeft {
-    width:70%;
+    width:50%;
     margin-top:2em;
     padding-left:15em;
 }
@@ -137,4 +137,8 @@ p{
 
 .add-btn{
     width: 33%;
+}
+
+@media only screen and (max-width: 800px) {
+
 }

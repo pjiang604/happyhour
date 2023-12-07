@@ -130,8 +130,7 @@ const Home = () => {
                   onClick={() => navigate(`/pages/drink`, { state: { drinkId: i.idDrink } })}
                 >
 
-                  <div
-                    className="drinkCard">
+                  <div className="drinkCard">
                     <img src={i.strDrinkThumb} className="drinkImg" alt={i.strDrink} />
                     <p>{i.strDrink}</p>
                   </div>
