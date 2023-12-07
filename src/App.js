@@ -6,6 +6,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Drink from './pages/Drink';
+import Footer from './components/Footer';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -44,6 +45,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="Drink/" element={<Drink />} />
         </Routes>
+        <Footer/>
       </InventoryContext.Provider>
     </div>
   );

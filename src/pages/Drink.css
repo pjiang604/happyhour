@@ -1,4 +1,11 @@
+p{
+    font-family: "Poppins"
+}
 
+
+.drinkDisplay{
+    width: 100%;
+}
 
 .drinkInfo {
     width: 100%;
@@ -73,11 +80,60 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.note_title {
-    margin-left: 373px;
-}
+
 
 .add-form{
     display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.notesContainer{
+    display: flex;
     flex-direction: row;
+    gap: 2%;
+    width: 100%;
+
+}
+
+.products{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 50%;
+    padding: 0 1em;
+
+}
+
+.notesInput{
+    width: 100%;
+    font-family: "Poppins";
+    padding: 0.5em 0.5em 2em 0.5em;
+    box-sizing: border;
+    border-radius: 1em;
+    border: 1px solid #FF9B85;
+    position: relative;
+}
+
+.formContainer{
+    width: 50%;
+}
+.notesSubContainer{
+    position: relative;
+}
+
+.form-btns{
+
+    position: absolute;
+    right: 0;
+    bottom: 1em;
+    
+}
+
+.save-btn{
+    color: #B3E0A3;
+}
+
+.add-btn{
+    width: 33%;
 }

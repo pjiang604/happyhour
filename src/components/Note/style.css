@@ -1,0 +1,17 @@
+.product{
+    background-color: #ffdbd3;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+}
+
+.taskItem{
+position: relative;
+padding-bottom: 2em;
+}
+
+.buttonContainer{
+    position: absolute;
+    right: 0;
+    bottom: 0.75em;
+}

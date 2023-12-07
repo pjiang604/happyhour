@@ -2,7 +2,6 @@ import './Drink.css'
 import { Outlet, Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useState, useEffect, useContext } from "react";
-import "./Drink.css"
 import DrinkHero from '../assets/Hero/DrinkHero.png'
 import { useLocation } from "react-router-dom";
 import { InventoryContext } from "../data/inventoryContext";
@@ -10,6 +9,8 @@ import Product from "../components/Note/Product";
 import { filter, sort } from "../utils/helpers";
 import Navbar from "../components/Nav";
 import { nanoid } from 'nanoid';
+import { Button, ButtonGroup } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
 const Drink = () => {
@@ -74,7 +75,7 @@ const Drink = () => {
       localStorage.setItem('drink' + drinkId, JSON.stringify(product2))
       console.log('product updated', JSON.stringify(product2))
     } else if (product2.length == 0) {
-     localStorage.removeItem('drink' + drinkId) 
+      localStorage.removeItem('drink' + drinkId)
     }
 
   }, [product2])
@@ -154,9 +155,33 @@ const Drink = () => {
   let displayedProducts = sort(products, sortOrder);
   displayedProducts = filter(displayedProducts, filterSelection, inStockFilter);
 
+  //Button Colours
+
+  const theme = createTheme({
+    palette: {
+      salmon: {
+        main: '#fe9983',
+        light: '#fec3b6',
+        dark: '#fe6f50',
+        contrastText: '#242105',
+      },
+      green: {
+        main: '#B3E0A3',
+        light: '#d3edc9',
+        dark: '#93d37d',
+        contrastText: '#242105',
+      },
+      red: {
+        main: '#fe9983',
+        light: '#fec3b6',
+        dark: '#fe6f50',
+        contrastText: '#242105',
+      }
+    },
+  });
+
   return (
-    <>
-      <div>
+      <ThemeProvider theme={theme}>
         <div className="drinkDisplay">
           <Navbar />
           {
@@ -187,7 +212,8 @@ const Drink = () => {
                           <li key={index}>{step}</li>
                         ))}
                       </ol>
-                      <p>Serve: {a.strGlass}</p>
+                      <h3>Serve</h3>
+                      <p>{a.strGlass}</p>
                     </div>
                   </div>
                 </div>
@@ -198,11 +224,13 @@ const Drink = () => {
           <div className="notes">
             <h1 className="note_title">Notes</h1>
 
-
             {!editing2 ? (
               <>
-                <button
-                  className="save-btn add-btn"
+                <Button
+                  className="add-btn"
+                  color="salmon"
+                  size="large"
+                  variant="contained"
                   onClick={() => {
                     console.log("Add a Task button clicked");
                     setEditing2("new");
@@ -210,43 +238,51 @@ const Drink = () => {
                   }}
                 >
                   Add a Note!
-                </button>
+                </Button>
               </>
             ) : (
 
 
               <div className="add-form">
                 <p>{currentDate}</p>
-                <form onSubmit={handleSubmit}>
-                  <div>
-                    <input
-                      id="outlined-basic"
-                      label="Your Task:"
-                      variant="outlined"
-                      fullWidth
-                      color="success"
-                      value={product.name}
-                      onChange={(e) => handleInput(e, "name")}
-                    />
+                <div className='notesContainer'>
+                  <div className='formContainer'>
+                    <form onSubmit={handleSubmit}>
+                      <div className="notesSubContainer">
+                        <textarea
+                          className="notesInput"
+                          placeholder='write something!'
+                          id="outlined-basic"
+                          label="Your Task:"
+                          variant="outlined"
+                          fullWidth
+                          color="success"
+                          value={product.name}
+                          onChange={(e) => handleInput(e, "name")}
+                        />
+                        <ButtonGroup className="form-btns">
+                          <Button
+                            className="cancel-btn"
+                            color="red"
+                            variant='contained'
+                            size='small'
+                            onClick={() => setEditing2(null)}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            className="save-btn"
+                            color="green"
+                            variant='contained'
+                            size='small'
+                            type="submit">
+                            Add Note
+                          </Button>
+                        </ButtonGroup>
+                      </div>
+                    </form>
                   </div>
 
-                  <div className="form-btns">
-                    <button
-                      className="cancel-btn"
-                      color="error"
-                      onClick={() => setEditing2(null)}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      className="save-btn"
-                      color="success"
-                      type="submit">
-                      Add Task
-                    </button>
-                  </div>
-                </form>
-                <div>
                   <div className="products">
                     {product2 && product2.length > 0 ? (
                       product2.map((p) => (
@@ -263,18 +299,19 @@ const Drink = () => {
                       <p>No drink notes...yet!</p>
                     )}
                   </div>
-
                 </div>
+
+
+
               </div>
             )}
 
           </div>
 
         </div>
-      </div>
-      <Outlet />
-      <Footer />
-    </>
+        <Footer/>
+
+      </ThemeProvider>
   )
 };
 
