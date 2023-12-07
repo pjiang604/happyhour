@@ -14,4 +14,10 @@ padding-bottom: 2em;
     position: absolute;
     right: 0;
     bottom: 0.75em;
+    gap: 0.5em;
+}
+
+
+.taskDate {
+    font-weight: 500;
 }

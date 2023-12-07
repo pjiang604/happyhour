@@ -261,6 +261,14 @@ const Drink = () => {
                           onChange={(e) => handleInput(e, "name")}
                         />
                         <ButtonGroup className="form-btns">
+                        <Button
+                            className="save-btn"
+                            color="green"
+                            variant='contained'
+                            size='small'
+                            type="submit">
+                            Add Note
+                          </Button>
                           <Button
                             className="cancel-btn"
                             color="red"
@@ -269,14 +277,6 @@ const Drink = () => {
                             onClick={() => setEditing2(null)}
                           >
                             Cancel
-                          </Button>
-                          <Button
-                            className="save-btn"
-                            color="green"
-                            variant='contained'
-                            size='small'
-                            type="submit">
-                            Add Note
                           </Button>
                         </ButtonGroup>
                       </div>

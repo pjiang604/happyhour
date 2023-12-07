@@ -124,11 +124,10 @@ p{
 }
 
 .form-btns{
-
     position: absolute;
     right: 0;
     bottom: 1em;
-    
+    gap: 0.5em;
 }
 
 .save-btn{
