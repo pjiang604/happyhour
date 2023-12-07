@@ -41,21 +41,22 @@ export default function Product({ date, name, product, deleteProduct2, setEditin
     <div className="product">
       <ThemeProvider theme={theme}>
         <div className="taskItem">
-          <p>{date}</p>
+          <p className="taskDate">{date}</p>
           <p>{name}</p>
           <ButtonGroup className="buttonContainer">
-            <Button color="red"
-              variant='contained'
-              size='small'
-              onClick={(() => deleteProduct2(product.id))}>
-              remove
-            </Button>
 
             <Button color="orange"
               variant='contained'
               size='small'
               onClick={() => setEditing3(product.id)}>
               edit
+            </Button>
+
+            <Button color="red"
+              variant='contained'
+              size='small'
+              onClick={(() => deleteProduct2(product.id))}>
+              remove
             </Button>
           </ButtonGroup>
         </div>
