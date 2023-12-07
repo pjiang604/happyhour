@@ -120,10 +120,10 @@ const Home = () => {
 
         </div>
 
-        <div className="drinkDisplay">
+        <div className="drinkDisplayHome">
           {data && data.drinks.map((i, index) => {
             return (
-              <div className="drinkContainer" key={index}>
+              <div className="drinkContainerHome" key={index}>
                 <Link
                   to={`/pages/drink/`}
                   state={{ drinkId: i.idDrink }}
