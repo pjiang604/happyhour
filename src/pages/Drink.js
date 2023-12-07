@@ -151,7 +151,7 @@ const Drink = () => {
   let displayedProducts = sort(products, sortOrder);
   displayedProducts = filter(displayedProducts, filterSelection, inStockFilter);
 
-  //button colours
+  //button colours for material ui
 
   const theme = createTheme({
     palette: {
