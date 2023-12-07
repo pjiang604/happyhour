@@ -13,7 +13,6 @@
 }
 
 .drinkContainerHome{
-    position: relative;
     border-radius: 1.5em;
     width: 25%;
     z-index: 1;
@@ -21,15 +20,15 @@
 
 
 .drinkImg {
-    height: 15em;
-    width: auto;
+    height: auto;
+    width: 100%;
     object-fit: contain;
     border-radius: 1.5em;
     transition: 0.5s;
 }
 
 .drinkImg:hover{
-    height: 17em;
+    width: 110%;
 
 }
 
@@ -134,7 +133,7 @@
     color: white
 }
 
-/*Button*/
+/* Button
 
 .HeartContainer {
     border: none;
@@ -158,4 +157,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+
+@media only screen and (max-width: 450px) {
+
+.drinkContainerHome{
+    border-radius: 1.5em;
+    width: 40%;
+    z-index: 1;
 }
+.selectContainer{
+    width: 100%;
+}
+  }
