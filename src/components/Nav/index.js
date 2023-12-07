@@ -6,7 +6,7 @@ export default function Navbar() {
 
     return (
         <div className="container">
-            <Link to='./'>
+            <Link to='/'>
             <div className="logo">
                 <h1 className="logo-former">happy</h1>
                 <h1 className="logo-latter">hour</h1>

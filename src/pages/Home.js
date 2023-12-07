@@ -87,11 +87,9 @@ const Home = () => {
       <HomeHero />
       <div className="contentContainer">
         <div className="filterContainer">
-          <div className="filterContainer" >
-            <div className="inputContainer">
-              <div className='input'>
-                <p>find your next drink</p>
-                <input
+          <div className="inputContainer">
+              <p>find your next drink</p>
+              {/* <input
                   name="freeInput"
                   placeholder='enter a drink name or ingredient'
                   className="freeInput inputStyling"
@@ -99,29 +97,27 @@ const Home = () => {
                 />
                 <button type="submit" onClick={handleClick}>
                   Submit
-                </button>
-
-              </div>
-
-              <select value={categoryOption} onChange={handleFilter}
-                className="selectContainer inputStyling">
-                <option value="default">select a category</option>
-                <option value="ordinary_drink">ordinary drink</option>
-                <option value="cocktail">cocktail</option>
-                <option value="shake">shake</option>
-                <option value="cocoa">cocoa</option>
-                <option value="shot">shot</option>
-                <option value="Coffee / Tea">coffee / tea</option>
-                <option value="homemade_Liqueur">homemade liqueur</option>
-                <option value="punch / party_drink">punch / party drink</option>
-                <option value="beer">beer</option>
-                <option value="soft_Drink">soft drink</option>
-                <option value="other / unknown">other / unknown</option>
-              </select>
+                </button> */}
 
             </div>
 
-          </div>
+            <select value={categoryOption} onChange={handleFilter}
+              className="selectContainer inputStyling">
+              <option value="default">select a category</option>
+              <option value="ordinary_drink">ordinary drink</option>
+              <option value="cocktail">cocktail</option>
+              <option value="shake">shake</option>
+              <option value="cocoa">cocoa</option>
+              <option value="shot">shot</option>
+              <option value="Coffee / Tea">coffee / tea</option>
+              <option value="homemade_Liqueur">homemade liqueur</option>
+              <option value="punch / party_drink">punch / party drink</option>
+              <option value="beer">beer</option>
+              <option value="soft_Drink">soft drink</option>
+              <option value="other / unknown">other / unknown</option>
+            </select>
+
+
         </div>
 
         <div className="drinkDisplay">
@@ -137,7 +133,7 @@ const Home = () => {
                   <div
                     className="drinkCard">
                     <img src={i.strDrinkThumb} className="drinkImg" alt={i.strDrink} />
-                    {i.strDrink}
+                    <p>{i.strDrink}</p>
                   </div>
                 </Link>
               </div>
@@ -146,7 +142,7 @@ const Home = () => {
         </div>
       </div >
 
-      <Footer />
+
     </>
   )
 };

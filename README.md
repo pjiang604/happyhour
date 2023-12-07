@@ -1,21 +1,22 @@
-# API
-[TheCocktailDB](https://www.thecocktaildb.com/api.php)
+# COMP3170 Final Project
+- BCIT Digital Design and Development Program
+- Set F
+- December 7, 2023
 
-# Getting Started with Create React App
+## Developer Info
+- Glenda Cheung - A01300287
+- Ivona Ivkovic - A01237477
+- Patricia Jiang - A01322414
+- Hedieh Kharaqani - A01293381
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## App Description
+happyhour is a web app designed to help people find new cocktails, and to help people have fun with mixing drinks by allowing people to save notes about each drink. 
 
-## Available Scripts
+## Dependencies
+- [Material UI](https://mui.com/material-ui/getting-started/)
+- [Nano ID](https://www.npmjs.com/package/nanoid)
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 
 
