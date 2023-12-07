@@ -30,7 +30,7 @@ p{
 
 .drinkLeft {
     width:50%;
-    margin-top:2em;
+    margin-top: 2em;
     display: flex;
     justify-content: center;
 }
@@ -142,6 +142,34 @@ p{
     width: 33%;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
+    .notesContainer{
+        flex-direction: column;
+        gap: 2em;
 
+    }  
+    
+    .formContainer, 
+    .products{
+        width: 100%;
+        padding: 0;
+    }
 }
+
+@media only screen and (max-width: 450px) {
+
+.drinkInfo{
+    flex-direction: column;
+    box-sizing: border-box;
+    
+}
+.drinkLeft{
+    width: 100%;
+}
+
+.notes{
+    padding: 0 4em;
+}
+
+
+      }
