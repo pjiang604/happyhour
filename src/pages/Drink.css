@@ -13,7 +13,6 @@ p{
     display: flex;
     flex-direction: row;
     height: 100%;
-    padding: 0 15%;
 }
 
 .drinkPageImg {
@@ -25,7 +24,8 @@ p{
 .drinkRight {
     width:50%;
     margin-top:4em;
-    font-family: "Poppins"
+    font-family: "Poppins";
+    padding-right:10em;
 }
 
 .drinkLeft {
@@ -33,6 +33,7 @@ p{
     margin-top: 2em;
     display: flex;
     justify-content: center;
+    padding-left:10em;
 }
 
 .ingredientsList {
@@ -115,7 +116,7 @@ p{
     font-family: "Poppins";
     padding: 0.5em 0.5em 2em 0.5em;
     box-sizing: border;
-    border-radius: 1em;
+    border-radius: 0.5em;
     border: 1px solid #FF9B85;
     position: relative;
 }

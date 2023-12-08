@@ -43,9 +43,9 @@ const Drink = () => {
 
   useEffect(() => {
     fetch(API_URL)
-      .then(response => response.json()) // converts the data to a JSON file
+      .then(response => response.json()) 
       .then(response => {
-        setData(response); // the data is now stored in the useState
+        setData(response); 
         console.log(data);
         return response.drinks[0].strInstructions;
       })
@@ -81,14 +81,11 @@ const Drink = () => {
   }, [product2])
 
   function setEditing3(id) {
-    // Find the product with the given id
     const productToEdit = product2.find((p) => p.id === id);
 
-    // Set the editing state
     setEditing(id);
     setEditing2("edit")
 
-    // Set the product state for pre-filling the input box
     setProduct({
       name: productToEdit.name,
       date: currentDate,
@@ -116,7 +113,6 @@ const Drink = () => {
       const updatedProductList = [...product2];
       updatedProductList[existingProductIndex] = product;
       setProduct2(updatedProductList);
-      // Reset editing state after updating
       setEditing2("new");
     }
     console.log("stringify", JSON.stringify(product2))
@@ -125,7 +121,7 @@ const Drink = () => {
     setProduct({
       name: "",
       date: currentDate,
-      id: nanoid(), // Only reset ID if needed (e.g., for a new product)
+      id: nanoid(), 
     });
   }
 
@@ -147,7 +143,7 @@ const Drink = () => {
 
 
 
-  //Local state for tracking filter and sorting selections
+  //local state for tracking filter and sorting selections
   const [filterSelection, setFilterSelection] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [inStockFilter, setInStockFilter] = useState(false);
@@ -155,7 +151,7 @@ const Drink = () => {
   let displayedProducts = sort(products, sortOrder);
   displayedProducts = filter(displayedProducts, filterSelection, inStockFilter);
 
-  //Button Colours
+  //button colours
 
   const theme = createTheme({
     palette: {
