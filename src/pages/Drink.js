@@ -19,12 +19,7 @@ const Drink = () => {
   const [product2, setProduct2] = useState([])
 
 
-  const [productInfo, setProductInfo] = useState({
-    name: "",
-    id: ""
-  })
-
-  const { addProduct, setEditing, updateProduct, editing, products } =
+  const { setEditing, products } =
     useContext(InventoryContext);
 
   const [data, setData] = useState();
@@ -43,9 +38,9 @@ const Drink = () => {
 
   useEffect(() => {
     fetch(API_URL)
-      .then(response => response.json()) 
+      .then(response => response.json())
       .then(response => {
-        setData(response); 
+        setData(response);
         console.log(data);
         return response.drinks[0].strInstructions;
       })
@@ -93,13 +88,11 @@ const Drink = () => {
     });
   }
 
-
   const [product, setProduct] = useState({
     name: '',
     date: currentDate,
     id: nanoid()
   });
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -121,12 +114,11 @@ const Drink = () => {
     setProduct({
       name: "",
       date: currentDate,
-      id: nanoid(), 
+      id: nanoid(),
     });
   }
 
   function deleteProduct2(id) {
-    // setProducts(products.filter((p) => p.id !== id));
     const updatedProducts = product2.filter((product) => product.id !== id);
     setProduct2(updatedProducts);
     console.log(updatedProducts)
@@ -141,8 +133,6 @@ const Drink = () => {
     console.log("edit updated", editing2)
   }, [editing2])
 
-
-
   //local state for tracking filter and sorting selections
   const [filterSelection, setFilterSelection] = useState("");
   const [sortOrder, setSortOrder] = useState("");
@@ -152,7 +142,6 @@ const Drink = () => {
   displayedProducts = filter(displayedProducts, filterSelection, inStockFilter);
 
   //button colours
-
   const theme = createTheme({
     palette: {
       salmon: {
@@ -177,137 +166,137 @@ const Drink = () => {
   });
 
   return (
-      <ThemeProvider theme={theme}>
-        <div className="drinkDisplay">
-          <Navbar />
-          {
-            data && data.drinks && data.drinks.map((a, value) => {
-              return (
-                <div key={value} className="drinkContainer">
-                  <div className="drinkHeroSection">
-                    <img src={DrinkHero} className="drinkHeroImg" alt="hero image" />
-                    <h2 className="drinkName">{a.strDrink}</h2>
-                  </div>
-                  <div className="drinkInfo">
-                    <div className="drinkLeft">
+    <ThemeProvider theme={theme}>
+      <div className="drinkDisplay">
+        <Navbar />
+        {
+          data && data.drinks && data.drinks.map((a, value) => {
+            return (
+              <div key={value} className="drinkContainer">
+                <div className="drinkHeroSection">
+                  <img src={DrinkHero} className="drinkHeroImg" alt="hero image" />
+                  <h2 className="drinkName">{a.strDrink}</h2>
+                </div>
+                <div className="drinkInfo">
+                  <div className="drinkLeft">
+                    <div className='drinkImgContainer'>
                       <img src={a.strDrinkThumb} className="drinkPageImg" alt={a.strDrink} />
                     </div>
-                    <div className="drinkRight">
-                      <h3>Ingredients</h3>
-                      <ul className="ingredientsList">
-                        {a.strMeasure1 && <li>{a.strMeasure1} {a.strIngredient1}</li>}
-                        {a.strMeasure2 && <li>{a.strMeasure2} {a.strIngredient2}</li>}
-                        {a.strMeasure3 && <li>{a.strMeasure3} {a.strIngredient3}</li>}
-                        {a.strMeasure4 && <li>{a.strMeasure4} {a.strIngredient4}</li>}
-                        {a.strMeasure5 && <li>{a.strMeasure5} {a.strIngredient5}</li>}
-                        {a.strMeasure6 && <li>{a.strMeasure6} {a.strIngredient6}</li>}
-                      </ul>
-                      <h3>Instructions</h3>
-                      <ol className="instructions">
-                        {steps.map((step, index) => (
-                          <li key={index}>{step}</li>
-                        ))}
-                      </ol>
-                      <h3>Serve</h3>
-                      <p>{a.strGlass}</p>
-                    </div>
+
+                  </div>
+                  <div className="drinkRight">
+                    <h3>Ingredients</h3>
+                    <ul className="ingredientsList">
+                      {a.strMeasure1 && <li>{a.strMeasure1} {a.strIngredient1}</li>}
+                      {a.strMeasure2 && <li>{a.strMeasure2} {a.strIngredient2}</li>}
+                      {a.strMeasure3 && <li>{a.strMeasure3} {a.strIngredient3}</li>}
+                      {a.strMeasure4 && <li>{a.strMeasure4} {a.strIngredient4}</li>}
+                      {a.strMeasure5 && <li>{a.strMeasure5} {a.strIngredient5}</li>}
+                      {a.strMeasure6 && <li>{a.strMeasure6} {a.strIngredient6}</li>}
+                    </ul>
+                    <h3>Instructions</h3>
+                    <ol className="instructions">
+                      {steps.map((step, index) => (
+                        <li key={index}>{step}</li>
+                      ))}
+                    </ol>
+                    <h3>Serve</h3>
+                    <p>{a.strGlass}</p>
                   </div>
                 </div>
-              )
-            }
+              </div>
             )
           }
-          <div className="notes">
-            <h1 className="note_title">Notes</h1>
+          )
+        }
+        <div className="notes">
+          <h1 className="note_title">Notes</h1>
 
-            {!editing2 ? (
-              <>
-                <Button
-                  className="add-btn"
-                  color="salmon"
-                  size="large"
-                  variant="contained"
-                  onClick={() => {
-                    console.log("Add a Task button clicked");
-                    setEditing2("new");
-                    console.log("editing2", editing2)
-                  }}
-                >
-                  Add a Note!
-                </Button>
-              </>
-            ) : (
+          {!editing2 ? (
+            <>
+              <Button
+                className="add-btn"
+                color="salmon"
+                size="large"
+                variant="contained"
+                onClick={() => {
+                  console.log("Add a Task button clicked");
+                  setEditing2("new");
+                  console.log("editing2", editing2)
+                }}
+              >
+                Add a Note!
+              </Button>
+            </>
+          ) : (
 
 
-              <div className="add-form">
-                <p>{currentDate}</p>
-                <div className='notesContainer'>
-                  <div className='formContainer'>
-                    <form onSubmit={handleSubmit}>
-                      <div className="notesSubContainer">
-                        <textarea
-                          className="notesInput"
-                          placeholder='write something!'
-                          id="outlined-basic"
-                          label="Your Task:"
-                          variant="outlined"
-                          fullWidth
-                          color="success"
-                          value={product.name}
-                          onChange={(e) => handleInput(e, "name")}
-                        />
-                        <ButtonGroup className="form-btns">
+            <div className="add-form">
+              <p>{currentDate}</p>
+              <div className='notesContainer'>
+                <div className='formContainer'>
+                  <form onSubmit={handleSubmit}>
+                    <div className="notesSubContainer">
+                      <textarea
+                        className="notesInput"
+                        placeholder='write something!'
+                        id="outlined-basic"
+                        label="Your Task:"
+                        variant="outlined"
+                        fullWidth
+                        color="success"
+                        value={product.name}
+                        onChange={(e) => handleInput(e, "name")}
+                      />
+                      <ButtonGroup className="form-btns">
                         <Button
-                            className="save-btn"
-                            color="green"
-                            variant='contained'
-                            size='small'
-                            type="submit">
-                            Add Note
-                          </Button>
-                          <Button
-                            className="cancel-btn"
-                            color="red"
-                            variant='contained'
-                            size='small'
-                            onClick={() => setEditing2(null)}
-                          >
-                            Cancel
-                          </Button>
-                        </ButtonGroup>
-                      </div>
-                    </form>
-                  </div>
-
-                  <div className="products">
-                    {product2 && product2.length > 0 ? (
-                      product2.map((p) => (
-                        <Product
-                          key={p.id}
-                          product={p}
-                          name={p.name}
-                          deleteProduct2={deleteProduct2}
-                          setEditing3={setEditing3}
-                          date={p.date}
-                        />
-                      ))
-                    ) : (
-                      <p>No drink notes...yet!</p>
-                    )}
-                  </div>
+                          className="save-btn"
+                          color="green"
+                          variant='contained'
+                          size='small'
+                          type="submit">
+                          Add Note
+                        </Button>
+                        <Button
+                          className="cancel-btn"
+                          color="red"
+                          variant='contained'
+                          size='small'
+                          onClick={() => setEditing2(null)}
+                        >
+                          Cancel
+                        </Button>
+                      </ButtonGroup>
+                    </div>
+                  </form>
                 </div>
 
-
-
+                <div className="products">
+                  {product2 && product2.length > 0 ? (
+                    product2.map((p) => (
+                      <Product
+                        key={p.id}
+                        product={p}
+                        name={p.name}
+                        deleteProduct2={deleteProduct2}
+                        setEditing3={setEditing3}
+                        date={p.date}
+                      />
+                    ))
+                  ) : (
+                    <p>No drink notes...yet!</p>
+                  )}
+                </div>
               </div>
-            )}
-
-          </div>
+            </div>
+          )}
 
         </div>
-        <Footer/>
 
-      </ThemeProvider>
+      </div>
+      <Footer />
+
+    </ThemeProvider>
   )
 };
 
