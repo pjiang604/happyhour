@@ -5,12 +5,9 @@ import "./Home.css"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
 const Home = () => {
 
   const navigate = useNavigate()
-
 
   //API
   const [data, setData] = useState();
@@ -19,10 +16,10 @@ const Home = () => {
 
   useEffect(() => {
     fetch(API_URL)
-      .then(response => response.json()) //converts the data to json file
+      .then(response => response.json())
       .then(response => {
         console.log(response);
-        setData(response); //the data is now stored in the useState
+        setData(response); 
       })
       .catch(err => {
         console.log(err);
@@ -38,10 +35,10 @@ const Home = () => {
       apiLink = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
     } else apiLink = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${e.target.value}`
     fetch(apiLink)
-      .then(response => response.json()) //converts the data to json file
+      .then(response => response.json()) 
       .then(response => {
         console.log(response);
-        setData(response); //the data is now stored in the useState
+        setData(response);
       })
       .catch(err => {
         console.log(err);
@@ -60,25 +57,15 @@ const Home = () => {
       apiLink = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
     } else apiLink = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?s=${e.target.value}`
     fetch(apiLink)
-      .then(response => response.json()) //converts the data to json file
+      .then(response => response.json()) 
       .then(response => {
         console.log(response);
-        setData(response); //the data is now stored in the useState
+        setData(response);
       })
       .catch(err => {
         console.log(err);
       })
     setSearchOption(e.target.value);
-  }
-
-  function handleClick() {
-    setState([...state, answers]);
-    setAnswers({});
-  }
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setAnswers({ ...answers, [name]: value });
   }
 
   return (
@@ -89,15 +76,6 @@ const Home = () => {
         <div className="filterContainer">
           <div className="inputContainer">
               <p>find your next drink</p>
-              {/* <input
-                  name="freeInput"
-                  placeholder='enter a drink name or ingredient'
-                  className="freeInput inputStyling"
-                  onChange={handleChange}
-                />
-                <button type="submit" onClick={handleClick}>
-                  Submit
-                </button> */}
 
             </div>
 
@@ -116,7 +94,6 @@ const Home = () => {
               <option value="soft_Drink">soft drink</option>
               <option value="other / unknown">other / unknown</option>
             </select>
-
 
         </div>
 

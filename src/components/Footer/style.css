@@ -38,3 +38,11 @@
     font-family: Fraunces;
     color: #292929;
 }
+
+@media only screen and (max-width: 450px) {
+
+.footer{
+    flex-direction: column;
+}
+
+}
