@@ -31,7 +31,7 @@ const Drink = () => {
 
   const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  const currentDate = ` ${monthName[new Date().getMonth()]} ${new Date().getDay()}, ${new Date().getFullYear()}`
+  const currentDate = ` ${monthName[new Date().getMonth()]} ${new Date().getDate()}, ${new Date().getFullYear()}`
 
   // const drinkId = location.state.drinkId;
   const API_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
@@ -273,7 +273,7 @@ const Drink = () => {
 
                 <div className="products">
                   {product2 && product2.length > 0 ? (
-                    product2.map((p) => (
+                    product2.toReversed().map((p) => (
                       <Product
                         key={p.id}
                         product={p}
